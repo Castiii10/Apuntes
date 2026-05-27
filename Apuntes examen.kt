@@ -151,7 +151,7 @@ fun adelantarVideo10Segundos() {
 
 
 
-//🗄️ 1. En la Base de Datos (SQLite)
+/*🗄️ 1. En la Base de Datos (SQLite)
 El mecanismo para guardar cosas en el móvil nunca cambia. Lo único que varía es qué estás guardando.
 
 Lo que se QUEDA igual (Estructura): Los comandos en mayúsculas (CREATE TABLE, SELECT * FROM, ORDER BY), la palabra ContentValues().apply, el método db.insert, y los bucles del Cursor (if (cursor.moveToFirst())).
@@ -184,4 +184,4 @@ Lo que tienes que CAMBIAR:
 
 Los números de los saltos de tiempo: El tiempo en Android se mide en milisegundos. En este examen os pedían avanzar de 10 en 10 segundos (10000 ms) o de 30 en 30 (30000 ms). Si en el próximo examen te pide saltos de 5 segundos, cambias el número a 5000.
 
-Los porcentajes de las condiciones: Si para dar por escuchada una pista te pide un 80%, tu condición es >= 80.0. Si un anuncio salta a mitad de vídeo, buscas el >= 50.0. Solo cambia el número según lo que dicte el enunciado.
+Los porcentajes de las condiciones: Si para dar por escuchada una pista te pide un 80%, tu condición es >= 80.0. Si un anuncio salta a mitad de vídeo, buscas el >= 50.0. Solo cambia el número según lo que dicte el enunciado.*/
