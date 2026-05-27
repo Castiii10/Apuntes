@@ -147,3 +147,41 @@ fun adelantarVideo10Segundos() {
     exoPlayer.seekTo(nuevaPosicion)
     posicionVideoMs = nuevaPosicion.toInt()
 }
+
+
+
+
+//🗄️ 1. En la Base de Datos (SQLite)
+El mecanismo para guardar cosas en el móvil nunca cambia. Lo único que varía es qué estás guardando.
+
+Lo que se QUEDA igual (Estructura): Los comandos en mayúsculas (CREATE TABLE, SELECT * FROM, ORDER BY), la palabra ContentValues().apply, el método db.insert, y los bucles del Cursor (if (cursor.moveToFirst())).
+
+Lo que tienes que CAMBIAR:
+
+Las constantes de texto: Si el examen ya no va de un "museo" sino de una "tienda de coches", tendrás que cambiar "visita_exposicion" por "coches", y las columnas por COLUMNA_MARCA, COLUMNA_PRECIO, etc.
+
+Los tipos en el Cursor: Fíjate en el orden de las columnas. Si la columna 0 es un número, usas cursor.getInt(0). Si la columna 1 es texto, usas cursor.getString(1). Solo tienes que seguir el orden que tú mismo hayas puesto en el CREATE TABLE.
+
+🌐 2. En Internet (HTTP y JSON)
+Las conexiones a un servidor son siempre un calco de sí mismas.
+
+Lo que se QUEDA igual (Estructura): Todo el bloque de código del HttpURLConnection, los BufferedReader, el StringBuilder, y el withContext(Dispatchers.IO). Eso es código "de infraestructura", es idéntico para un museo, para la NASA o para Netflix.
+
+Lo que tienes que CAMBIAR:
+
+La URL base: Cambiar el enlace de la constante de arriba por el nuevo archivo .php que os dé el profesor.
+
+Los parámetros: En ?peticion=exposicion&codigo=..., cambias los nombres de las variables por lo que te pida el enunciado (por ejemplo: ?accion=buscar&id=...).
+
+Las llaves del JSON: Si el servidor te devuelve datos de un libro, en lugar de json.getString("titulo") o json.getString("sala"), escribirás json.getString("autor") o json.getInt("paginas"). Mira el archivo .php que os dé para saber cómo se llaman las etiquetas.
+
+🎬 3. En los Reproductores (Audio y Vídeo)
+Tanto MediaPlayer como ExoPlayer funcionan por estados que se manejan con botones.
+
+Lo que se QUEDA igual (Estructura): Los métodos nativos de los reproductores: .start(), .pause(), .seekTo(), .isPlaying y .currentPosition. El truco del .coerceIn(...) o .coerceAtLeast() para no salirte del tiempo del audio también sirve para siempre.
+
+Lo que tienes que CAMBIAR:
+
+Los números de los saltos de tiempo: El tiempo en Android se mide en milisegundos. En este examen os pedían avanzar de 10 en 10 segundos (10000 ms) o de 30 en 30 (30000 ms). Si en el próximo examen te pide saltos de 5 segundos, cambias el número a 5000.
+
+Los porcentajes de las condiciones: Si para dar por escuchada una pista te pide un 80%, tu condición es >= 80.0. Si un anuncio salta a mitad de vídeo, buscas el >= 50.0. Solo cambia el número según lo que dicte el enunciado.
